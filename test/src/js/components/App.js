@@ -1,32 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Masthead from './Masthead';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Masthead from './Masthead'
 
 class App extends React.Component {
-
-  static propTypes = {
-  };
-
   state = {
     loading: true
-  };
+  }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log('App: componentDidMount')
     this.setState({
       loading: false
     })
   };
 
-  componentDidUpdate(){
+  componentDidUpdate () {
     console.log('App: componentDidUpdate')
   };
 
-  render(){
+  render () {
     return (
       <div>
-        <Masthead/>
-        <div id="app">
+        <Masthead />
+        <div id='app'>
           <h1>App</h1>
         </div>
       </div>
@@ -34,4 +30,4 @@ class App extends React.Component {
   };
 };
 
-export default App;
+export default App

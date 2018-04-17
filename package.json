@@ -22,5 +22,8 @@
     "commander": "^2.15.1",
     "glob": "^7.1.2",
     "string": "^3.3.3"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

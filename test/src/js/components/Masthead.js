@@ -1,29 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class Masthead extends React.Component {
-
   static propTypes = {
-  };
+  }
 
   state = {
-  };
+  }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log('Masthead: componentDidMount')
-  };
+  }
 
-  componentDidUpdate(){
+  componentDidUpdate () {
     console.log('Masthead: componentDidUpdate')
-  };
+  }
 
-  render(){
+  render () {
     return (
-      <div id="Masthead">
+      <div id='Masthead'>
         <h1>Masthead</h1>
       </div>
     )
-  };
-};
+  }
+}
 
-export default Masthead;
+export default Masthead

@@ -46,8 +46,6 @@ function extract (file) {
 
 //
 function filter (classes) {
-  let array = [];
-
 }
 
 //
