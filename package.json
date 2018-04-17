@@ -8,8 +8,19 @@
     "type": "git",
     "url": ""
   },
-  "bin":{
+  "bin": {
     "utilss": "./index.js"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "commander": "^2.15.1",
+    "glob": "^7.1.2",
+    "string": "^3.3.3"
+  }
 }

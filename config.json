@@ -1,22 +1,9 @@
 {
-  "settings": {
-    "at": true,
-    "prefix": false,
-    "seperator": "--",
-  },
   "breakpoints": {
-    "small": "",
-    "medium": "",
-    "large": "",
-    "xlarge": ""
-  },
-  "scale": {
-    "xsmall": "",
-    "small": "",
-    "medium": "",
-    "large": "",
-    "xlarge": "",
-    "xxlarge": ""
+    "small": "(max-width:30em)",
+    "medium": "(min-width:48em)",
+    "large": "(min-width:64em)",
+    "xlarge": "(min-width:80em)"
   },
   "units": {
     "rem": "rem",
@@ -332,5 +319,5 @@
     "w-b": "word-break",
     "w-s": "word-spacing",
     "z": "z-index"
-  },
+  }
 }
