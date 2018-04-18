@@ -23,6 +23,7 @@
     "assert": "^1.4.1",
     "commander": "^2.15.1",
     "glob": "^7.1.2",
+    "lodash": "^4.17.5",
     "string": "^3.3.3"
   },
   "standard": {

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
+const _ = require('lodash')
 const path = require('path')
 const glob = require('glob')
 const pjson = require('./package')
@@ -19,7 +20,10 @@ fs.readFile(program.input, 'utf8', function (err, data) {
   }
   const classes = extract(data)
   const filtered = filter(classes)
+  const css = create(filtered)
   console.log(classes)
+  console.log(filtered)
+  console.log(css)
 })
 
 function extract (file) {
@@ -44,14 +48,30 @@ function extract (file) {
   })
 }
 
-//
 function filter (classes) {
+  let properties = config.properties
+  let array = classes.filter(function (className) {
+    let value = className.split('--')[0]
+    if (properties.indexOf(value) > -1) {
+      return className
+    }
+  })
+  return array
 }
 
-//
-function create () {
-}
-
-//
-function save () {
+function create (filtered) {
+  let css = ''
+  let breakpoints = []
+  filtered.forEach(function (className, index) {
+    let array = className.split('--')
+    let property = array[0]
+    let value = array[1]
+    let unit = (array[2]) ? array[2] : null
+    let rule = `
+      .${className}{
+        ${property}:${value}${unit ? unit : ''};
+      }`
+    css = css += rule
+  })
+  return css
 }
