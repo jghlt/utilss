@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["airbnb"],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 0,
+    "comma-dangle": 0,
+    "react/jsx-tag-spacing": 0,
+    "react/jsx-filename-extension": 0
+  }
+}

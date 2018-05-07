@@ -1,0 +1,137 @@
+{% extends '_layouts/_base.html' %}
+{% set meta_image = post.get_field('entry_thumbnail') %}
+{% set view = 'page' %}
+{% block content %}
+
+    {% set lead = post.get_field('entry_intro') %}
+    {% set intro = post.get_field('entry_excerpt') %}
+    {% set thumbnail = post.get_field('entry_thumbnail') %}
+
+    {% set blocks = post.get_field('entry_blocks_clone_blocks_repeater') %}
+    {% set gallery = post.get_field('entry_gallery_clone_gallery_repeater') %}
+    {% set content = post.get_field('entry_sections_clone_flexible_content') %}
+
+    {% set callToAction = post.get_field('entry_call_to_action_repeater') %}
+    {% set callToActionBackround = post.get_field('entry_call_to_action_background') %}
+
+    {% set mastheadBackground = post.get_field('entry_masthead_background_palette_select') %}
+    {% set introBackground = post.get_field('entry_intro_background_palette_select') %}
+    {% set contentBackground = post.get_field('entry_sections_background_palette_select') %}
+
+    {% set introColor = function('project_get_text_color_from_background', introBackground)  %}
+    {% set contentColor = function('project_get_text_color_from_background', contentBackground)  %}
+    {% if callToAction %}
+        {% set callToActionColor = function('project_get_text_color_from_background', callToActionBackround) %}
+    {% endif %}
+
+    <div id="ajax__container">
+        <div data-view="{{ view }}">
+
+            {% include '_partials/_masthead.html' with {
+                'props' : {
+                    'position': 'relative',
+                    'background': mastheadBackground,
+                    'backgroundSticky' : mastheadBackground
+                }
+            } %}
+
+            <main class="c__main">
+                <article class="c__section">
+                    <header class="c__section__header position--relative background-color--{{ introBackground }}">
+                        <div class="padding--vertical--3 padding--vertical--4--@medium padding--vertical--5--@large">
+                            <div class="text-align--center">
+                                <div class="max-width--large margin--auto">
+                                    <div class="padding--lateral--2">
+                                        {% if thumbnail %}
+                                            <div class="padding--bottom--2 padding--bottom--4--@large">
+                                        {% endif %}
+                                            {% if lead %}
+                                                <div {% if intro %}class="padding--bottom--2"{% endif %}>
+                                                    <h1 class="c__section__title margin--0 color--{{ introColor }} font-family--sans-serif font-size--14px line-height--heading text-transform--uppercase letter-spacing---15">
+                                                        <span>
+                                                            {{ lead }}
+                                                        </span>
+                                                    </h1>
+                                                </div>
+                                            {% endif %}
+                                            {% if intro %}
+                                                <h2 class="c__section__title margin--0 color--gold font-family--sans-serif-bold line-height--heading font-size--2 font-size--3--@medium font-size--4--@large text-transform--uppercase letter-spacing---1">
+                                                    <span>
+                                                        {{ intro }}
+                                                    </span>
+                                                </h2>
+                                            {% endif %}
+                                        {% if thumbnail %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if thumbnail %}
+                                    {% set id = thumbnail %}
+                                    <div class="max-width--xxlarge margin--auto">
+                                        <div class="position--absolute position--bottom--0 position--left--0 width--100p height--40p background-color--{{ contentBackground }}"></div>
+                                        <div class="padding--lateral--1 padding--lateral--2--@medium">
+                                            <div class="grid">
+                                                <div class="grid__item width--100p">
+                                                    <div data-component="media">
+                                                        <div class="c__media position--relative">
+                                                            <div class="c__media__background aspect-ratio--16x9 background-color--rgba---15"></div>
+                                                            <div class="c__media__foreground position--absolute position--cover background-image background-size--cover"
+                                                            data-media-lazy="{{ TimberImage(id).src|resize(2000, '', 'center')|relative }}"></div>
+                                                            <div class="c__media__gradient position--absolute position--cover"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </header>
+                    {% if content %}
+                        <div class="c__section__content background-color--{{ contentBackground }}">
+                            <div class="padding--top--3 padding--top--4--@medium padding--top--5--@large">
+                                {% include '_partials/_content-flex.html' with {
+                                    'props' : {
+                                        'content': content,
+                                        'color' : contentColor
+                                    }
+                                } %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if blocks %}
+                        <div class="c__section__content background-color--{{ contentBackground }}">
+                            {% include '_partials/_content-blocks.html' with {
+                                'props' : {
+                                    'blocks': blocks
+                                }
+                            } only %}
+                        </div>
+                    {% endif %}
+                    {% if gallery %}
+                        <div class="c__section__content background-color--{{ contentBackground }}">
+                            {% include '_partials/_content-gallery.html' with {
+                                'props' : {
+                                    'gallery': gallery
+                                }
+                            } only %}
+                        </div>
+                    {% endif %}
+                    {% if callToAction %}
+                        <div class="c__section__content background-color--{{ callToActionBackround }}">
+                            {% include '_partials/_content-call-to-action.html' with {
+                                'props' : {
+                                    'callToAction': callToAction|slice(0, 1),
+                                    'color' : callToActionColor
+                                }
+                            } only %}
+                        </div>
+                    {% endif %}
+                </article>
+            </main>
+        </div>
+    </div>
+
+{% endblock %}

@@ -11,22 +11,21 @@
   "bin": {
     "utilss": "./index.js"
   },
-  "devDependencies": {
-    "babel-eslint": "^8.2.3"
-  },
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "assert": "^1.4.1",
+    "async": "^2.6.0",
+    "babel-eslint": "^8.2.3",
     "commander": "^2.15.1",
-    "glob": "^7.1.2",
-    "lodash": "^4.17.5",
-    "string": "^3.3.3"
-  },
-  "standard": {
-    "parser": "babel-eslint"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "glob": "^7.1.2"
   }
 }

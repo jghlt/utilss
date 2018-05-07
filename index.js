@@ -1,77 +1,58 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
-const _ = require('lodash')
-const path = require('path')
-const glob = require('glob')
-const pjson = require('./package')
-const config = require('./config')
-const program = require('commander')
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const async = require('async');
+const config = require('./config');
+const program = require('commander');
+
+function listInput(value) {
+  return value.split(',');
+}
+
+function extractClassnames(input) {
+  const regex = /(?:class|className)=["']?([\d\w-_ @#]+)+["']?/g;
+  let matches = [];
+  let match = null;
+  // eslint-disable-next-line no-cond-assign
+  while ((match = regex.exec(input)) !== null) {
+    matches = matches.concat(match[1].split(' '));
+  }
+  return matches;
+}
+
+function getFileContents(file) {
+  const exists = fs.existsSync(file);
+  const content = (exists) ? fs.readFileSync(file, 'utf8') : false;
+  if (!content) console.log(`${file} does not exist`);
+  return content;
+}
+
+function getClassesFromFile(file) {
+  const content = getFileContents(file);
+  const classes = extractClassnames(content);
+  return classes;
+}
+
+function getClassesFromFiles(files) {
+  return Promise.all(files.map(file => getClassesFromFile(file)));
+}
+
+function run(files) {
+  const classes = getClassesFromFiles(files);
+  classes
+    .then((values) => {
+      console.log(values);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 program
-  .version(pjson.version)
-  .option('-i, --input <input>', 'input')
+  .option('-i, --input <input>', 'input', listInput)
   .option('-o, --output <output>', 'output')
-  .parse(process.argv)
+  .parse(process.argv);
 
-fs.readFile(program.input, 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err)
-  }
-  const classes = extract(data)
-  const filtered = filter(classes)
-  const css = create(filtered)
-  console.log(classes)
-  console.log(filtered)
-  console.log(css)
-})
-
-function extract (file) {
-  let regex = /(?:class|className)=["']?([\d\w-_ @]+)+["']?/g
-  let array = []
-  let result
-
-  while (true) {
-    result = regex.exec(file)
-    if (!result) {
-      break
-    }
-    array = array.concat(result[1].split(' '))
-  }
-
-  if (array.length <= 1) {
-    return array
-  }
-
-  return array.filter(function (value, index) {
-    return array.indexOf(value) === index
-  })
-}
-
-function filter (classes) {
-  let properties = config.properties
-  let array = classes.filter(function (className) {
-    let value = className.split('--')[0]
-    if (properties.indexOf(value) > -1) {
-      return className
-    }
-  })
-  return array
-}
-
-function create (filtered) {
-  let css = ''
-  let breakpoints = []
-  filtered.forEach(function (className, index) {
-    let array = className.split('--')
-    let property = array[0]
-    let value = array[1]
-    let unit = (array[2]) ? array[2] : null
-    let rule = `
-      .${className}{
-        ${property}:${value}${unit ? unit : ''};
-      }`
-    css = css += rule
-  })
-  return css
-}
+run(program.input, program.output);

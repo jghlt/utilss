@@ -5,16 +5,15 @@
     "large": "(min-width:64em)",
     "xlarge": "(min-width:80em)"
   },
-  "units": {
-    "rem": "rem",
-    "em": "em",
-    "px": "px",
-    "p": "%",
-    "vh": "vh",
-    "vw": "vw",
-    "vmin": "vmin",
-    "vmax": "vmax"
-  },
+  "units": [
+    "#",
+    "%",
+    "em",
+    "px",
+    "rem",
+    "vh",
+    "vw"
+  ],
   "properties": [
     "align-content",
     "align-items",
@@ -174,14 +173,14 @@
     "a-c": "align-content",
     "a-i": "align-items",
     "a-s": "align-self",
-    "anim-d": "animation-delay",
-    "anim-dir": "animation-direction",
-    "anim-dur": "animation-duration",
-    "anim-f-m": "animation-fill-mode",
-    "anim-i-c": "animation-iteration-count",
-    "anim-n": "animation-name",
-    "anim-p-s": "animation-play-state",
-    "anim-t-f": "animation-timing-function",
+    "an-d": "animation-delay",
+    "an-dir": "animation-direction",
+    "an-dur": "animation-duration",
+    "an-f-m": "animation-fill-mode",
+    "an-i-c": "animation-iteration-count",
+    "an-n": "animation-name",
+    "an-p-s": "animation-play-state",
+    "an-t-f": "animation-timing-function",
     "an": "animation",
     "bg-a": "background-attachment",
     "bg-cl": "background-clip",
@@ -319,5 +318,26 @@
     "w-b": "word-break",
     "w-sp": "word-spacing",
     "z": "z-index"
+  },
+  "custom": {
+    "fill-parent": {
+      "position": "absolute",
+      "top": "0",
+      "right": "0",
+      "bottom": "0",
+      "left": "0"
+    }
+  },
+  "colors": {
+    "black": "#1a1a1a",
+    "white": "#fefefe",
+    "smoke": "#f6f6f6"
+  },
+  "images": {
+    "brand": {
+      "path": "../images/brand.svg",
+      "width": "96",
+      "height": "32"
+    }
   }
 }
