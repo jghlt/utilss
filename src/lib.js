@@ -44,12 +44,61 @@ function getUniqueSelectors(selectors) {
 }
 
 function getutilssSelectors(selectors) {
+  const customKeys = Object.keys(config.custom);
   const propertyKeys = Object.keys(config.properties);
+  const allKeys = [].concat(...customKeys, ...propertyKeys)
   const utilssSelectors = selectors.filter((selector) => {
     const selectorKey = selector.split(/:|--/)[0];
-    return propertyKeys.indexOf(selectorKey) !== -1;
+    return allKeys.indexOf(selectorKey) !== -1;
   });
   return utilssSelectors;
+}
+
+function getSelectorProperty(selector) {
+  let selectorProperty = false;
+  return selectorProperty;
+}
+
+function getSelectorModifier(selector) {
+  let selectorModifier = false;
+  return selectorModifier;
+}
+
+function getSelectorValue(selector) {
+  let selectorValue = false;
+  return selectorValue;
+}
+
+function getSelectorBreakpoint(selector) {
+  let selectorBreakpoint = false;
+  return selectorBreakpoint;
+}
+
+function getSelectorParts(selector) {
+  const selectorProperty = getSelectorProperty(selector);
+  const selectorModifier = getSelectorModifier(selector);
+  const selectorValue = getSelectorValue(selector);
+  const selectorBreakpoint = getSelectorBreakpoint(selector);
+  const selectorParts = {
+    property: selectorProperty,
+    modifier: selectorModifier,
+    value: selectorValue,
+    breakpoint: selectorBreakpoint
+  };
+  return selectorParts;
+}
+
+function getSelectorObjects(selectors) {
+  const selectorObjects = [];
+  selectors.forEach((selector) => {
+    const selectorParts = getSelectorParts(selector);
+    selectorObjects.push(selectorParts);
+  });
+  return selectorObjects;
+}
+
+function getRuleSetObjects(objects) {
+  const ruleSetObjects = [];
 }
 
 function utilss(files) {
@@ -59,8 +108,9 @@ function utilss(files) {
       const flattenSelectors = getFlattenedSelectors(result);
       const uniqueSelectors = getUniqueSelectors(flattenSelectors);
       const utilssSelectors = getutilssSelectors(uniqueSelectors);
-      console.log('utilssSelectors');
-      //console.log(utilssSelectors);
+      const utilssSelectorsObjects = getSelectorObjects(utilssSelectors);
+      console.log('utilssSelectorsObjects');
+      console.log(utilssSelectorsObjects);
     })
     .catch((error) => {
       console.log(error);
