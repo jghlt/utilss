@@ -78,6 +78,7 @@ function getSelectorModifier(selector) {
 
 function getSelectorValue(selector) {
   const hasValue = selector.includes(':');
+  const isColor = (selector.includes('bg-c:') || selector.includes('c:'));
   let selectorValue = false;
   if (hasValue) {
     const regex = /:(.*)/;
@@ -85,6 +86,9 @@ function getSelectorValue(selector) {
     const match = removeBreakpoint.match(regex);
     if (match) {
       selectorValue = match[1];
+    }
+    if (isColor) {
+      selectorValue = (selectorValue in config.colors) ? config.colors[selectorValue] : selectorValue;
     }
   }
   return selectorValue;
@@ -109,6 +113,7 @@ function getSelectorParts(selector) {
   const selectorValue = getSelectorValue(selector);
   const selectorBreakpoint = getSelectorBreakpoint(selector);
   const selectorParts = {
+    selector,
     property: selectorProperty,
     modifier: selectorModifier,
     value: selectorValue,
@@ -126,8 +131,52 @@ function getSelectorObjects(selectors) {
   return selectorObjects;
 }
 
-function getRuleSetObjects(objects) {
+function getRulesetIsCustom(selectorObject) {
+  const configKey = selectorObject.property;
+  const rulesetIsCustom = (configKey && (configKey in config.custom)) || false;
+  return rulesetIsCustom;
+}
+
+function getRulesetIsModifier(selectorObject) {
+  const configKey = selectorObject.modifier;
+  const rulesetIsModifier = (configKey && (configKey in config.modifiers)) || false;
+  return rulesetIsModifier;
+}
+
+function getRulesetIsBreakpoint(selectorObject) {
+  const configKey = selectorObject.breakpoint;
+  const rulesetIsBreakpoint = (configKey && (configKey in config.breakpoints)) || false;
+  return rulesetIsBreakpoint;
+}
+
+function getRulesetDeclarations(selectorObject, rulesetIsCustom, rulesetIsModifier) {
+  const rulesetDeclarations = [];
+  return rulesetDeclarations;
+}
+
+function getRulesetObject(selectorObject) {
+  const rulesetIsCustom = getRulesetIsCustom(selectorObject);
+  const rulesetIsModifier = getRulesetIsModifier(selectorObject);
+  const rulesetIsBreakpoint = getRulesetIsBreakpoint(selectorObject);
+  const rulesetDeclarations = getRulesetDeclarations(selectorObject, rulesetIsCustom, rulesetIsModifier);
+  const rulesetObject = {
+    selector: selectorObject.selector,
+    selectorParts: { ...selectorObject },
+    isCustom: rulesetIsCustom,
+    isModifier: rulesetIsModifier,
+    isBreakpoint: rulesetIsBreakpoint,
+    declarations: rulesetDeclarations
+  };
+  return rulesetObject;
+}
+
+function getRulesetObjects(objects) {
   const ruleSetObjects = [];
+  objects.forEach((object) => {
+    const rulesetObject = getRulesetObject(object);
+    ruleSetObjects.push(rulesetObject);
+  });
+  return ruleSetObjects;
 }
 
 function utilss(files) {
@@ -138,8 +187,9 @@ function utilss(files) {
       const uniqueSelectors = getUniqueSelectors(flattenSelectors);
       const utilssSelectors = getutilssSelectors(uniqueSelectors);
       const utilssSelectorsObjects = getSelectorObjects(utilssSelectors);
-      //console.log('utilssSelectorsObjects');
-      console.log(utilssSelectorsObjects);
+      const utilssRulesetObjects = getRulesetObjects(utilssSelectorsObjects);
+      console.log('utilssRulesetObjects');
+      console.log(utilssRulesetObjects);
     })
     .catch((error) => {
       console.log(error);
