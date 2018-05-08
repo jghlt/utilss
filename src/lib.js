@@ -1,6 +1,7 @@
 const fs = require('fs');
 const config = require('./config');
 
+
 function list(value) {
   return value.split(',');
 }
@@ -46,7 +47,7 @@ function getUniqueSelectors(selectors) {
 function getutilssSelectors(selectors) {
   const customKeys = Object.keys(config.custom);
   const propertyKeys = Object.keys(config.properties);
-  const allKeys = [].concat(...customKeys, ...propertyKeys)
+  const allKeys = [].concat(...customKeys, ...propertyKeys);
   const utilssSelectors = selectors.filter((selector) => {
     const selectorKey = selector.split(/:|--/)[0];
     return allKeys.indexOf(selectorKey) !== -1;
@@ -55,22 +56,50 @@ function getutilssSelectors(selectors) {
 }
 
 function getSelectorProperty(selector) {
-  let selectorProperty = false;
+  const selectorKey = selector.split(/:|--/)[0];
+  const selectorProperty = selectorKey;
   return selectorProperty;
 }
 
 function getSelectorModifier(selector) {
+  const hasModifier = selector.includes('--');
   let selectorModifier = false;
+  if (hasModifier) {
+    const regex = /(?:--)(.*?)(?:@|:)/;
+    const match = selector.match(regex);
+    if (match) {
+      selectorModifier = match[1];
+    } else {
+      selectorModifier = selector.split('--')[1];
+    }
+  }
   return selectorModifier;
 }
 
 function getSelectorValue(selector) {
+  const hasValue = selector.includes(':');
   let selectorValue = false;
+  if (hasValue) {
+    const regex = /:(.*)/;
+    const removeBreakpoint = selector.split('@')[0];
+    const match = removeBreakpoint.match(regex);
+    if (match) {
+      selectorValue = match[1];
+    }
+  }
   return selectorValue;
 }
 
 function getSelectorBreakpoint(selector) {
+  const hasBreakpoint = selector.includes('@');
   let selectorBreakpoint = false;
+  if (hasBreakpoint) {
+    const regex = /@(.*)/;
+    const match = selector.match(regex);
+    if (match) {
+      selectorBreakpoint = match[1];
+    }
+  }
   return selectorBreakpoint;
 }
 
@@ -109,7 +138,7 @@ function utilss(files) {
       const uniqueSelectors = getUniqueSelectors(flattenSelectors);
       const utilssSelectors = getutilssSelectors(uniqueSelectors);
       const utilssSelectorsObjects = getSelectorObjects(utilssSelectors);
-      console.log('utilssSelectorsObjects');
+      //console.log('utilssSelectorsObjects');
       console.log(utilssSelectorsObjects);
     })
     .catch((error) => {

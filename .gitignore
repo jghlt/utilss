@@ -45,6 +45,7 @@ dploy.yaml
 # Ignore backups/admin/working directories
 ######################
 todo.md
+notes.md
 admin/*
 backups/*
 working/*
