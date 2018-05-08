@@ -1,74 +1,34 @@
 
-/**
- * @function  [filterUniqueClasses]
- * @returns {array} classes
- */
-
-function filterProperties(classes, ) {
-  const properties = config.properties;
-  const customProperties = Object.keys(config.custom);
-  const shorthandProperties = Object.keys(config.shorthand);
-  const allProperties = properties.concat(customProperties, shorthandProperties);
-  const array = classes.filter((className) => {
-    const value = className.split('--')[0];
-    if (allProperties.indexOf(value) > -1) {
-      return className;
-    }
-  });
-  return array;
+function getSelectorProperty(selector) {
+  let selectorProperty = false;
+  return selectorProperty;
 }
 
-function createRules(classes) {
-  const rules = [];
-  classes.forEach((value) => {
-    const className = value;
-    const classNameArray = className.split('--');
-    const propertyKey = classNameArray[0];
-    const propertyType = getPropertyType(propertyKey);
-    const property = getProperty(propertyType, classNameArray);
-    const propertyValue = getPropertyValue(propertyType, property);
-    const breakpoint = getBreakpoint(classNameArray);
-    if (classNameArray.length > 1) {
-      const rule = {
-        className,
-        classNameArray,
-        property,
-        values: propertyValue,
-        breakpoint
-      };
-      rules.push(rule);
-    } else {
-      console.log(`You have provided a property without a value: ${className}`);
-    }
-  });
-  return rules;
+function getSelectorModifier(selector) {
+  let selectorModifier = false;
+  return selectorModifier;
 }
 
-function getPropertyType(propertyKey) {
-  const propertyType = false;
-  return propertyType;
+function getSelectorValue(selector) {
+  let selectorValue = false;
+  return selectorValue;
 }
 
-function getProperty(propertyType) {
-  const propertyType = false;
-  return propertyType;
+function getSelectorBreakpoint(selector) {
+  let selectorBreakpoint = false;
+  return selectorBreakpoint;
 }
 
-function getPropertyValue(propertyType, property) {
-  return propertyType;
+function getSelectorParts(selector) {
+  const selectorProperty = getSelectorProperty(selector);
+  const selectorModifier = getSelectorModifier(selector);
+  const selectorValue = getSelectorValue(selector);
+  const selectorBreakpoint = getSelectorBreakpoint(selector);
+  const selectorParts = {
+    property: selectorProperty,
+    modifier: selectorModifier,
+    value: selectorValue,
+    breakpoint: selectorBreakpoint
+  };
+  return selectorParts;
 }
-
-function getBreakpoint(classNameArray) {
-  let key = false;
-  const last = classNameArray[classNameArray.length - 1];
-  const hasBreakpoint = last.indexOf('@') === 0;
-  if (hasBreakpoint) {
-    const breakpointArray = last.split('@');
-    const breakpointKey = breakpointArray[1];
-    // check if key exists in config here ...
-    // let breakpointKeyExists = (true) ? breakpointKey : false
-    key = breakpointKey;
-  }
-  return key;
-}
-wo

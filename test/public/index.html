@@ -1,190 +1,62 @@
-{% extends '_layouts/_base.html' %}
-{% set view = 'home' %}
-{% block content %}
+<!doctype html>
+<html class="no-js" lang="en">
 
-    {% set hero = options.home_hero_clone %}
-    {% set blocks = options.home_blocks_clone %}
-    {% set gallery = options.home_gallery_clone %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <div id="ajax__container" class="float o--0-5--@medium fill-parent--@xlarge">
-        <div data-view="{{ view }}">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-            {% include '_partials/_masthead.html' with {
-                'props' : {
-                    'position': 'relative',
-                    'background': 'transparent',
-                    'backgroundSticky' : 'rangoon'
-                }
-            } %}
+  <link rel="stylesheet" href="css/output.css">
+</head>
 
-            <main class="c__main c__main--offset-masthead-height">
-                {% if hero %}
-                    {% set items = hero.hero_repeater %}
-                    <div class="c__hero" data-component="hero">
-                        <div class="c__hero__container c__hero--height width--100p overflow--hidden position--relative background-color--black" data-hero-carousel>
-                            {% for item in items %}
-                                {% set id = item.id %}
-                                <div class="c__hero__item c__hero--height background-color--black display--table width--100p height--100p">
-                                    <div class="position--relative c__hero--height width--100p">
-                                        <div class="position--absolute position--cover"
-                                        data-component="media">
-                                            <div class="c__media position--absolute position--cover">
-                                                <div class="c__media__background position--absolute position--cover"></div>
-                                                <div class="c__media__foreground position--absolute position--cover background-image background-size--cover"
-                                                data-media-lazy="{{ TimberImage(id).src|resize(2000, '', 'center')|relative }}"></div>
-                                                <div class="c__media__gradient position--absolute position--cover"></div>
-                                                <div class="c__media__cover position--absolute position--cover"
-                                                data-media-cover>
-                                                    {% if item.title %}
-                                                        <div class="display--table width--100p height--100p">
-                                                            <div class="display--table-cell text-align--center vertical-align--middle position--relative">
-                                                                <div class="max-width--large margin--auto">
-                                                                    <div class="padding--lateral--2">
-                                                                        <h2 class="margin--0 color--white font-family--sans-serif-bold line-height--heading font-size--2 font-size--3--@medium font-size--4--@large text-transform--uppercase letter-spacing---1">
-                                                                            {{ item.title }}
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endif %}
-                                                    {% if item.sub_title %}
-                                                        <div class="position--absolute width--100p position--left--0 position--bottom--0">
-                                                            <div class="padding--lateral--1 padding--lateral--2--@medium padding--bottom--3">
-                                                                <p class="font-size--14px display-inline-block color--white font-family--sans-serif text-align--left text-transform--uppercase letter-spacing---1">
-                                                                    {{ item.sub_title }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="position--absolute width--100p position--left--0 position--bottom--0">
-                            <div class="padding--lateral--1 padding--lateral--2--@medium padding--bottom--1">
-                                <div class="color--gold" data-hero-dots></div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if blocks %}
-                    {% set items = blocks.blocks_repeater %}
-                    <div class="c__section">
-                        <div class="background-color--rangoon">
-                            <div class="padding--vertical--3 padding--vertical--4--@medium padding--vertical--5--@large">
-                                <header class="c__section__header">
-                                    <div class="text-align--center">
-                                        <div class="max-width--medium margin--auto">
-                                            <div class="padding--lateral--2">
-                                                {% if options.home_blocks_title %}
-                                                    <div class="padding--bottom--3 padding--bottom--4--@large">
-                                                        <h1 class="c__section__title margin--0 color--gold font-family--sans-serif font-size--14px line-height--heading text-transform--uppercase letter-spacing---15">
-                                                            <span>
-                                                                {{ options.home_blocks_title }}
-                                                            </span>
-                                                        </h1>
-                                                    </div>
-                                                {% endif %}
-                                                {% if options.home_blocks_headline %}
-                                                    <div class="padding--bottom--3 padding--bottom--4--@large">
-                                                        <h3 class="c__section__title margin--0 color--white font-family--serif line-height--heading font-size--24px font-size--2--@medium font-size--40px--@large">
-                                                            <span>
-                                                                {{ options.home_blocks_headline }}
-                                                            </span>
-                                                        </h3>
-                                                    </div>
-                                                {% endif %}
-                                                <div class="padding--bottom--3 padding--bottom--4--@large">
-                                                    <ul class="list list--unstyled">
-                                                        <li class="display--inline-block">
-                                                            <span class="c__action display--block width--3" data-action="scroll.nextContent">
-                                                                <span class="display--block background-image background-image--ui--arrow--down--gold"></span>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="c__section__content">
-                                    <div class="max-width--xxlarge margin--auto">
-                                        <div class="padding--lateral--1 padding--lateral--2--@medium">
-                                            <div class="grid">
-                                                {% for item in items %}
-                                                    {% set orientation = cycle(['portrait', 'landscape', 'landscape', 'portrait'], loop.index0) %}
-                                                    {% include '_partials/_article-thumbnail--' ~ orientation ~'.html' with {
-                                                        'props' : {
-                                                            'image': item.id,
-                                                            'title': item.title,
-                                                            'content': item.content,
-                                                            'link': item.link,
-                                                            'color': 'white',
-                                                            'border': true,
-                                                            'border_color':'transparent'
-                                                        }
-                                                    } only %}
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if gallery %}
-                    {% set items = gallery.gallery_repeater %}
-                    {% set items = items|slice(0, 1) %}
-                    <div class="c__section">
-                        <div class="background-color--rangoon">
-                            <div class="padding--bottom--4--@medium padding--bottom--5--@large">
-                                <div class="max-width--xxlarge margin--auto">
-                                    <div class="padding--lateral--2--@medium">
-                                        <div class="grid--flush">
-                                            <div class="grid__item grid__item--flush width--100p">
-                                                {% for item in items %}
-                                                    {% set id = item.id %}
-                                                    {% set video = item.video %}
-                                                    <div data-component="media">
-                                                        <div class="c__media position--relative">
-                                                            <div class="c__media__background aspect-ratio--16x9 background-color--rgba---15"></div>
-                                                            <div class="c__media__foreground position--absolute position--cover background-image background-size--cover"
-                                                            data-media-lazy="{{ TimberImage(id).src|resize(1400, '', 'center')|relative }}"></div>
-                                                            <div class="c__media__gradient position--absolute position--cover"></div>
-                                                            {% if video %}
-                                                                <div class="c__media__embed position--absolute position--cover"
-                                                                data-media-embed="{{ video }}"></div>
-                                                                <div class="c__media__overlay position--absolute position--cover"
-                                                                data-media-overlay>
-                                                                    <div class="display--table width--100p height--100p">
-                                                                        <div class="display--table-cell text-align--center vertical-align--middle position--relative">
-                                                                            <div class="display--block margin--auto width--3 width--4--@medium width--6--@large">
-                                                                                <span class="c__action display--block width--100p background-image background-image--ui--play--white"
-                                                                                data-media-play>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            </main>
+<body>
+
+  <div class="p:relative w:100%">
+    <div class="pa--vertical:1rem@medium">
+      <div class="pa--lateral:2rem">
+        <div class="pa:2rem">
+          <h1 class="f-f--calibre f-s:24px l-h:1">
+            utilss
+          </h1>
+          <h2 class="f-s:18px">
+            utility stylessheets
+          </h2>
+          <div class="w:50%">
+            <div class="d:block bg-i--brand"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="c__main">
+    <div class="p:relative w:100%@xlarge bg-c:#F0F0F0">
+      <p class="c:#333333 f-s:18px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eum ducimus, placeat sunt. Alias aperiam officia temporibus sed doloribus hic ex aliquid mollitia fuga facere facilis, possimus tempore dicta nulla.
+      </p>
+      <p class="w-c:opacity c:#141414">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eum ducimus, placeat sunt. Alias aperiam officia temporibus sed doloribus hic ex aliquid mollitia fuga facere facilis, possimus tempore dicta nulla.
+      </p>
     </div>
 
-{% endblock %}
+    <div class="bg-c:smoke bg-c:black@large d:block dt@medium">
+      <p class="color:#333333 f-s:18px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eum ducimus, placeat sunt. Alias aperiam officia temporibus sed doloribus hic ex aliquid mollitia fuga facere facilis, possimus tempore dicta nulla.
+      </p>
+    </div>
+  </main>
+
+  <footer class="c__foooter">
+    <div class="p:relative b:1px-solid">
+      <div class="p:relative fill-parent:0@medium"></div>
+    </div>
+  </footer>
+
+</body>
+</html>

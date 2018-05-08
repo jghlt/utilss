@@ -1,0 +1,120 @@
+.p--relative {
+  position: relative;
+};
+
+.w--100\% {
+  width: 100%;
+};
+
+@media (min-width:48em) {
+ 
+  .pa--vertical--1rem--\@medium {
+    padding-left: $1;
+    padding-right: $1;
+  };
+}
+
+.pa--lateral--2rem {
+  padding-left: $1;
+  padding-right: $1;
+};
+
+.pa--2rem {
+  padding: 2rem;
+};
+
+.f-f--calibre {
+  0: /;
+  1: '; 2: C; 3: a; 4: l; 5: i; 6: b; 7: r; 8: e; 9: /; 10: ';
+  11: ,;
+  12: ; 13: H;
+  14: e;
+  15: l;
+  16: v;
+  17: e;
+  18: t;
+  19: i;
+  20: c;
+  21: a;
+  22: ,;
+  23: ; 24: s;
+  25: a;
+  26: n;
+  27: s;
+  28: -;
+  29: s;
+  30: e;
+  31: r;
+  32: i;
+  33: f;
+};
+
+.f-s--24px {
+  font-size: 24px;
+};
+
+.l-h--1 {
+  line-height: 1;
+};
+
+.f-s--18px {
+  font-size: 18px;
+};
+
+.w--50\% {
+  width: 50%;
+};
+
+.d--block {
+  display: block;
+};
+
+.bg-i--brand {
+  background-image: brand;
+};
+
+.bg-c--\#F0F0F0 {
+  background-color: #F0F0F0;
+};
+
+.color--\#333333 {
+  color: #333333;
+};
+
+.pa--bottom--0 {
+  padding: bottom;
+};
+
+.w-c--opacity {
+  will-change: opacity;
+};
+
+.c--\#141414 {
+  color: #141414;
+};
+
+.bg-c--smoke {
+  background-color: smoke;
+};
+
+@media (min-width:64em) {
+ 
+  .bg-c--black--\@large {
+    background-color: black;
+  };
+}
+
+.position--fill-parent {
+  position: fill-parent;
+};
+
+@media (min-width:48em) {
+ 
+  .p--fill-parent--\@medium {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  };
+} 
