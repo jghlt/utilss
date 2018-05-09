@@ -1,10 +1,11 @@
 # utilss
 
-Generate utility classes via your templates.
+Declerative functional utility classes.
 
 ## Todo
 - validate classes array prior to calling getSelectorObjects. Its possible for classes to be present in the array at this point despite not having any values or being part of the custom/modifier objects: eg f-f--calibre.
-- look into solution for border values. Currently these are '1px-solid', but could/should be '1px solid'.
+- look into solution for multiple values eg borders. Currently not supported, but could be. eg bo-t:1px-solid-smoke;
+- add jsdoc comments
 
 ## Features
 
@@ -29,3 +30,4 @@ todo
 * UnCss
 * Atomic CSS
 * svbstrate
+* shed-css

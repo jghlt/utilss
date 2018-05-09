@@ -88,7 +88,9 @@ function getSelectorValue(selector) {
       selectorValue = match[1];
     }
     if (isColor) {
-      selectorValue = (selectorValue in config.colors) ? config.colors[selectorValue] : selectorValue;
+      selectorValue = (
+        (selectorValue in config.colors) ? config.colors[selectorValue] : selectorValue
+      );
     }
   }
   return selectorValue;
@@ -138,8 +140,12 @@ function getRulesetIsCustom(selectorObject) {
 }
 
 function getRulesetIsModifier(selectorObject) {
-  const configKey = selectorObject.modifier;
-  const rulesetIsModifier = (configKey && (configKey in config.modifiers)) || false;
+  const propertyKey = selectorObject.property;
+  const modifierKey = selectorObject.modifier;
+  const rulesetIsModifier = (
+    (propertyKey && (propertyKey in config.modifiers)) &&
+    (modifierKey && (modifierKey in config.modifiers[propertyKey]))
+  ) || false;
   return rulesetIsModifier;
 }
 
@@ -151,6 +157,13 @@ function getRulesetIsBreakpoint(selectorObject) {
 
 function getRulesetDeclarations(selectorObject, rulesetIsCustom, rulesetIsModifier) {
   const rulesetDeclarations = [];
+  if (rulesetIsCustom) {
+    rulesetDeclarations.push('custom');
+  } else if (rulesetIsModifier) {
+    rulesetDeclarations.push('modifier');
+  } else {
+    rulesetDeclarations.push('normal');
+  }
   return rulesetDeclarations;
 }
 
@@ -165,7 +178,8 @@ function getRulesetObject(selectorObject) {
     isCustom: rulesetIsCustom,
     isModifier: rulesetIsModifier,
     isBreakpoint: rulesetIsBreakpoint,
-    declarations: rulesetDeclarations
+    declarations: rulesetDeclarations,
+    isValidUtilssObject: (rulesetIsModifier || rulesetIsCustom || selectorObject.value)
   };
   return rulesetObject;
 }

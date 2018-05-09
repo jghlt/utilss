@@ -9,9 +9,9 @@
     "url": ""
   },
   "bin": {
-    "utilss": "./index.js"
+    "utilss": "./src/cli.js"
   },
-  "main": "./index.js",
+  "main": "./src/utilss.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

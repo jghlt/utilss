@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-const program = require('commander');
 
+const program = require('commander');
 const {
   list,
   utilss
-} = require('./src/lib.js');
+} = require('./utilss.js');
 
 program
   .option('-i, --input <input>', 'input', list)
