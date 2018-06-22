@@ -43,7 +43,7 @@ Pass in some html:
 
 or jsx:
 
-```javascript
+```js
 function Header(props) {
   const { title } = props;
   return (
@@ -69,33 +69,33 @@ Get back some css:
   position:relative;
 }
 
-w-100\%{
+.w-100\%{
   width:100%;
 }
 
-pa--vertical\:1rem{
+.pa--vertical\:1rem{
   padding-top:1rem;
   padding-bottom:1rem;
 }
 
-pa--lateral\:2rem{
+.pa--lateral\:2rem{
   padding-left:2rem;
   padding-left:2rem;
 }
 
-pa\:2rem{
+.pa\:2rem{
   padding:2rem;
 }
 
-pa\:4rem{
+.pa\:4rem{
   padding:4rem;
 }
 
-f-s\:24px{
+.f-s\:24px{
   font-size:24px;
 }
 
-l-h\:1{
+.l-h\:1{
   line-height:1;
 }
 ```
@@ -166,7 +166,7 @@ output.css
   font-size:2rem;
 }
 
-.color\:#1a1a1a{
+.color\:\#1a1a1a{
   color:#1a1a1a;
 }
 
