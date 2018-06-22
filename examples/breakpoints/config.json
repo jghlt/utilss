@@ -1,5 +1,6 @@
 {
   "breakpoints": {
+    "small": "(min-width:30em)",
     "medium": "(min-width:48em)"
   }
 }

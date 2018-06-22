@@ -148,6 +148,7 @@ config.json
 ```json
 {
   "breakpoints": {
+    "small": "(min-width:30em)",
     "medium": "(min-width:48em)"
   }
 }
@@ -155,24 +156,30 @@ config.json
 
 input.html
 ```html
-<h1 class="f-s:2rem f-s:2rem@medium c:#1a1a1a">
+<h1 class="f-s:18px f-s:22px@small f-s:2rem@medium c:#1a1a1a">
   Breakpoints
 </h1>
 ```
 
 output.css
 ```css
-.font-size\:2rem{
-  font-size:2rem;
+.font-size\:18px{
+  font-size:18px;
 }
 
 .color\:\#1a1a1a{
   color:#1a1a1a;
 }
 
+@media screen and (min-width:30em) {
+  .font-size\:22px{
+    font-size:22px;
+  }
+}
+
 @media screen and (min-width:48em) {
-  .font-size\:4rem{
-    font-size:4rem;
+  .font-size\:2rem{
+    font-size:2rem;
   }
 }
 ```
