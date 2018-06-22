@@ -28,7 +28,6 @@ utilss is CLI tool for generating functional css utility classes. It allows you 
 Pass in some html:
 
 ```html
-// input.html
 <div class="p:relative w:100%">
   <div class="pa--vertical:1rem@medium">
     <div class="pa--lateral:2rem">
@@ -45,7 +44,6 @@ Pass in some html:
 or jsx:
 
 ```javascript
-// input.js
 function Header(props) {
   const { title } = props;
   return (
@@ -67,7 +65,6 @@ function Header(props) {
 Get back some css:
 
 ```css
-/* output.css */
 .p\:relative{
   position:relative;
 }
@@ -113,13 +110,14 @@ input.html
   Basic
 </h1>
 ```
+
 output.css
 ```css
 .font-size\:2rem{
   font-size:2rem;
 }
 
-.color\:#1a1a1a{
+.color\:\#1a1a1a{
   color:#1a1a1a;
 }
 ```
@@ -139,27 +137,31 @@ output.css
   font-size:2rem;
 }
 
-.color\:#1a1a1a{
+.color\:\#1a1a1a{
   color:#1a1a1a;
 }
 ```
 
 ### Breakpoints
 
-```
-// config.json
+config.json
+```json
 {
   "breakpoints": {
     "medium": "(min-width:48em)"
   }
 }
+```
 
-// input.html
+input.html
+```html
 <h1 class="f-s:2rem f-s:2rem@medium c:#1a1a1a">
   Breakpoints
 </h1>
+```
 
-// output.css
+output.css
+```css
 .font-size\:2rem{
   font-size:2rem;
 }
@@ -177,8 +179,8 @@ output.css
 
 ### Modifiers
 
-```
-// config.json
+config.json
+```json
 {
   "breakpoints": {
     "medium": "(min-width:48em)"
@@ -204,8 +206,10 @@ output.css
     }
   }
 }
+```
 
-// input.html
+input.html
+```html
 <div class="pa--lateral:2rem pa--lateral:4rem@medium pa--vertical:20px">
   <h2 class="f-s--title c:#1a1a1a">
     Modifiers
@@ -216,8 +220,10 @@ output.css
     Modifiers
   </p>
 </div>
+```
 
-// output.css
+output.css
+```css
 .pa--lateral\:2rem{
   padding-left:2rem;
   padding-left:2rem;
@@ -237,8 +243,8 @@ output.css
 ```
 
 ### Custom
-```
-// config.json
+config.json
+```json
 {
   "custom": {
     "ff-mono": {
@@ -258,8 +264,10 @@ output.css
     }
   }
 }
+```
 
-// input.html
+input.html
+```html
 <div class="p:relative">
   <div class="fill-parent:0">
     <h2 class="ff-mono">
@@ -272,8 +280,10 @@ output.css
     </h2>
   </div>
 </div>
+```
 
-// output.css
+output.css
+```css
 .p\:relative{
   position:relative;
 }
@@ -293,13 +303,13 @@ output.css
   bottom:20px;
   left:20px;
 }
-
 ```
 
 
 ### Colors
-```
-// config.json
+
+config.json
+```json
 {
   "colors": {
     "black": "#1a1a1a",
@@ -308,8 +318,10 @@ output.css
     "grey": "#4E4E4E"
   }
 }
+```
 
-// input.html
+input.html
+```html
 <div class="bg-c:smoke">
   <h1 class="font-size:2rem color:black">
     <span class="d:block">
@@ -320,28 +332,29 @@ output.css
     </span>
   </h1>
 </div>
+```
 
-// output.css
-.bg-c/:smoke{
+output.css
+```css
+.bg-c\:smoke{
   background-color:#f6f6f6;
 }
 
-.font-size/:2rem{
+.font-size\:2rem{
   font-size:2rem;
 }
 
-.color/:black{
+.color\:black{
   color:#1a1a1a;
 }
 
-.d:block{
+.d\:block{
   display:block;
 }
 
-.c:grey{
+.c\:grey{
   color:#4E4E4E;
 }
-
 ```
 
 ### More
