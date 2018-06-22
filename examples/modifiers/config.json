@@ -1,17 +1,25 @@
 {
-	"breakpoints": {
-	  "medium": "(min-width:48em)"
-	},
-	"modifiers": {
-		"pa": {
-	    "lateral": {
-	      "padding-left": "$value",
-	      "padding-right": "$value"
-	    },
+  "breakpoints": {
+    "medium": "(min-width:48em)"
+  },
+  "modifiers": {
+    "pa": {
+      "lateral": {
+        "padding-left": "$value",
+        "padding-right": "$value"
+      },
       "vertical": {
         "padding-top": "$value",
         "padding-bottom": "$value"
       }
+    },
+    "f-s": {
+      "body": {
+        "font-size": "16px"
+      },
+      "title": {
+        "font-size": "24px"
+      }
     }
-	}
+  }
 }

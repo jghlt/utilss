@@ -189,15 +189,28 @@ l-h\:1{
         "padding-top": "$value",
         "padding-bottom": "$value"
       }
+    },
+    "f-s": {
+      "body": {
+        "font-size": "16px"
+      },
+      "title": {
+        "font-size": "24px"
+      }
     }
   }
 }
 
 // input.html
 <div class="pa--lateral:2rem pa--lateral:4rem@medium pa--vertical:20px">
-  <h2 class="f-s:2rem c:#1a1a1a">
+  <h2 class="f-s--title c:#1a1a1a">
     Modifiers
   </h2>
+</div>
+<div class="pa--lateral:2rem pa--lateral:4rem@medium pa--vertical:20px">
+  <p class="f-s--body c:#1a1a1a">
+    Modifiers
+  </p>
 </div>
 
 // output.css
