@@ -43,7 +43,7 @@ Pass in some html:
 
 or jsx:
 
-```js
+```jsx
 function Header(props) {
   const { title } = props;
   return (
