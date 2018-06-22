@@ -29,15 +29,15 @@ Pass in some html:
 ```
 // input.html
 <div class="p:relative w:100%">
-	<div class="pa--vertical:1rem@medium">
-	  <div class="pa--lateral:2rem">
-	    <div class="pa:2rem">
-	      <h1 class="f-s:24px l-h:1">
-	        utilss
-	      </h1>
-	    </div>
-	  </div>
-	</div>
+  <div class="pa--vertical:1rem@medium">
+    <div class="pa--lateral:2rem">
+      <div class="pa:2rem">
+        <h1 class="f-s:24px l-h:1">
+          utilss
+        </h1>
+      </div>
+    </div>
+  </div>
 </div>
 ```
 
@@ -64,7 +64,7 @@ function Header(props) {
 ```
 
 Get back some css:
-  
+
 ```
 // output.css
 .p\:relative{
@@ -311,7 +311,7 @@ l-h\:1{
 
 .font-size/:2rem{
 	font-size:2rem;
-} 
+}
 
 .color/:black{
 	color:#1a1a1a;
@@ -328,7 +328,7 @@ l-h\:1{
 ```
 
 ### More
-Please see examples folder for more use cases 
+Please see examples folder for more use cases
 
 
 ## Todo
