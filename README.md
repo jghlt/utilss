@@ -143,7 +143,7 @@ l-h\:1{
 ### Breakpoints
 
 ```
-// config.js
+// config.json
 {
   "breakpoints": {
     "medium": "(min-width:48em)"
@@ -174,7 +174,7 @@ l-h\:1{
 ### Modifiers
 
 ```
-// config.js
+// config.json
 {
   "breakpoints": {
 	  "medium": "(min-width:48em)"
@@ -221,7 +221,7 @@ l-h\:1{
 
 ### Custom
 ```
-// config.js
+// config.json
 {
   "custom": {
     "ff-mono": {
@@ -282,7 +282,7 @@ l-h\:1{
 
 ### Colors
 ```
-// config.js
+// config.json
 {
   "colors": {
     "black": "#1a1a1a",
