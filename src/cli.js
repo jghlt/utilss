@@ -9,6 +9,7 @@ const {
 program
   .option('-i, --input <input>', 'input', list)
   .option('-o, --output <output>', 'output')
+  .option('-c, --config <config>', 'config')
   .parse(process.argv);
 
-utilss(program.input, program.output);
+utilss(program.input, program.output, program.config);

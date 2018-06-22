@@ -6,8 +6,9 @@
   "description": "internet",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/jghlt/utilss"
   },
+  "preferGlobal": true,
   "bin": {
     "utilss": "./src/cli.js"
   },

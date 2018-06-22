@@ -1,7 +1,6 @@
 const fs = require('fs');
 const config = require('./config');
 
-
 function list(value) {
   return value.split(',');
 }

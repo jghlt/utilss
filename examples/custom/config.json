@@ -1,0 +1,19 @@
+{
+	"custom": {
+		"ff-mono": {
+			"font-family": "'Space Mono', monospace",
+			"font-weight": "400"
+		},
+		"ff-mono-bold": {
+			"font-family": "'Space Mono', monospace",
+			"font-weight": "700"
+		},
+		"fill-parent":{
+  		"position": "absolute",
+  		"top": "$value",
+  		"right": "$value",
+  		"bottom": "$value",
+  		"left": "$value"
+    }
+	}
+}

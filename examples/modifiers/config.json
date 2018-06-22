@@ -1,0 +1,17 @@
+{
+	"breakpoints": {
+	  "medium": "(min-width:48em)"
+	},
+	"modifiers": {
+		"pa": {
+	    "lateral": {
+	      "padding-left": "$value",
+	      "padding-right": "$value"
+	    },
+      "vertical": {
+        "padding-top": "$value",
+        "padding-bottom": "$value"
+      }
+    }
+	}
+}
