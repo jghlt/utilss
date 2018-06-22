@@ -68,37 +68,37 @@ Get back some css:
 ```
 // output.css
 .p\:relative{
-	position:relative;
+  position:relative;
 }
 
 w-100\%{
-	width:100%;
+  width:100%;
 }
 
 pa--vertical\:1rem{
-	padding-top:1rem;
-	padding-bottom:1rem;
+  padding-top:1rem;
+  padding-bottom:1rem;
 }
 
 pa--lateral\:2rem{
-	padding-left:2rem;
-	padding-left:2rem;
+  padding-left:2rem;
+  padding-left:2rem;
 }
 
 pa\:2rem{
-	padding:2rem;
+  padding:2rem;
 }
 
 pa\:4rem{
-	padding:4rem;
+  padding:4rem;
 }
 
 f-s\:24px{
-	font-size:24px;
+  font-size:24px;
 }
 
 l-h\:1{
-	line-height:1;
+  line-height:1;
 }
 ```
 
@@ -109,16 +109,16 @@ l-h\:1{
 ```
 // input.html
 <h1 class="font-size:2rem color:#1a1a1a">
-	Basic
+  Basic
 </h1>
 
 // output.css
 .font-size\:2rem{
-	font-size:2rem;
+  font-size:2rem;
 }
 
 .color\:#1a1a1a{
-	color:#1a1a1a;
+  color:#1a1a1a;
 }
 ```
 
@@ -127,16 +127,16 @@ l-h\:1{
 ```
 // input.html
 <h1 class="f-s:2rem c:#1a1a1a">
-	Shorthand
+  Shorthand
 </h1>
 
 // output.css
 .font-size\:2rem{
-	font-size:2rem;
+  font-size:2rem;
 }
 
 .color\:#1a1a1a{
-	color:#1a1a1a;
+  color:#1a1a1a;
 }
 ```
 
@@ -145,29 +145,29 @@ l-h\:1{
 ```
 // config.js
 {
-	"breakpoints": {
-		"medium": "(min-width:48em)"
-	}
+  "breakpoints": {
+    "medium": "(min-width:48em)"
+  }
 }
 
 // input.html
 <h1 class="f-s:2rem f-s:2rem@medium c:#1a1a1a">
-	Breakpoints
+  Breakpoints
 </h1>
 
 // output.css
 .font-size\:2rem{
-	font-size:2rem;
+  font-size:2rem;
 }
 
 .color\:#1a1a1a{
-	color:#1a1a1a;
+  color:#1a1a1a;
 }
 
 @media screen and (min-width:48em) {
-	.font-size\:4rem{
-		font-size:4rem;
-	}
+  .font-size\:4rem{
+    font-size:4rem;
+  }
 }
 ```
 
@@ -176,46 +176,46 @@ l-h\:1{
 ```
 // config.js
 {
-	"breakpoints": {
-		"medium": "(min-width:48em)"
+  "breakpoints": {
+	  "medium": "(min-width:48em)"
 	},
-	"modifiers": {
-		"pa": {
-	      "lateral": {
-	      		"padding-left": "$value",
-	      		"padding-right": "$value"
-	      },
-      		"vertical": {
-        		"padding-top": "$value",
-        		"padding-bottom": "$value"
-      		}
-    	}
-	}
+  "modifiers": {
+	  "pa": {
+      "lateral": {
+        "padding-left": "$value",
+        "padding-right": "$value"
+      },
+      "vertical": {
+        "padding-top": "$value",
+        "padding-bottom": "$value"
+      }
+    }
+  }
 }
 
 // input.html
 <div class="pa--lateral:2rem pa--lateral:4rem@medium pa--vertical:20px">
-	<h2 class="f-s:2rem c:#1a1a1a">
-		Modifiers
-	</h2>
+  <h2 class="f-s:2rem c:#1a1a1a">
+    Modifiers
+  </h2>
 </div>
 
 // output.css
 .pa--lateral\:2rem{
-	padding-left:2rem;
-	padding-left:2rem;
+  padding-left:2rem;
+  padding-left:2rem;
 }
 
 .pa--vertical\:20px{
-	padding-top:20px;
-	padding-bottom:20px;
+  padding-top:20px;
+  padding-bottom:20px;
 }
 
 @media screen and (min-width:48em) {
-	.pa--lateral\:4rem{
-		padding-left:4rem;
-		padding-left:4rem;
-	}
+  .pa--lateral\:4rem{
+    padding-left:4rem;
+    padding-left:4rem;
+  }
 }
 ```
 
@@ -223,58 +223,58 @@ l-h\:1{
 ```
 // config.js
 {
-	"custom": {
-		"ff-mono": {
-			"font-family": "'Space Mono', monospace",
-			"font-weight": "400"
-		},
-		"ff-mono-bold": {
-			"font-family": "'Space Mono', monospace",
-			"font-weight": "700"
-		},
-		"fill-parent":{
-      		"position": "absolute",
-      		"top": "$value",
-      		"right": "$value",
-      		"bottom": "$value",
-      		"left": "$value"
-    	}
-	}
+  "custom": {
+    "ff-mono": {
+      "font-family": "'Space Mono', monospace",
+      "font-weight": "400"
+    },
+    "ff-mono-bold": {
+      "font-family": "'Space Mono', monospace",
+      "font-weight": "700"
+    },
+    "fill-parent":{
+      "position": "absolute",
+      "top": "$value",
+      "right": "$value",
+      "bottom": "$value",
+      "left": "$value"
+    }
+  }
 }
 
 // input.html
 <div class="p:relative">
-	<div class="fill-parent:0">
-		<h2 class="ff-mono">
-			<span class="ff-mono-bold d:block">
-				ff mono bold
-			</span>
-			<span class="d:block">
-				ff mono
-			</span>
-		</h2>
-	</div>
+  <div class="fill-parent:0">
+    <h2 class="ff-mono">
+      <span class="ff-mono-bold d:block">
+        ff mono bold
+      </span>
+      <span class="d:block">
+        ff mono
+      </span>
+    </h2>
+  </div>
 </div>
 
 // output.css
 .p\:relative{
-	position:relative;
+  position:relative;
 }
 
 .fill-parent\:0{
-	position:absolute;
-	top:0;
-	right:0;
-	bottom:0;
-	left:0;
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
 }
 
 .fill-parent\:20px{
-	position:absolute;
-	top:20px;
-	right:20px;
-	bottom:20px;
-	left:20px;
+  position:absolute;
+  top:20px;
+  right:20px;
+  bottom:20px;
+  left:20px;
 }
 
 ```
@@ -284,45 +284,45 @@ l-h\:1{
 ```
 // config.js
 {
-	"colors": {
-		"black": "#1a1a1a",
-    	"white": "#fefefe",
-    	"smoke": "#f6f6f6",
-    	"grey": "#4E4E4E"
-	}
+  "colors": {
+    "black": "#1a1a1a",
+    "white": "#fefefe",
+    "smoke": "#f6f6f6",
+    "grey": "#4E4E4E"
+  }
 }
 
 // input.html
 <div class="bg-c:smoke">
-	<h1 class="font-size:2rem color:black">
-		<span class="d:block">
-			Color black
-		</span>
-		<span class="d:block c:grey">
-			Color grey
-		</span>
-	</h1>
+  <h1 class="font-size:2rem color:black">
+    <span class="d:block">
+      Color black
+    </span>
+    <span class="d:block c:grey">
+      Color grey
+    </span>
+  </h1>
 </div>
 
 // output.css
 .bg-c/:smoke{
-	background-color:#f6f6f6;
+  background-color:#f6f6f6;
 }
 
 .font-size/:2rem{
-	font-size:2rem;
+  font-size:2rem;
 }
 
 .color/:black{
-	color:#1a1a1a;
+  color:#1a1a1a;
 }
 
 .d:block{
-	display:block;
+  display:block;
 }
 
 .c:grey{
-	color:#4E4E4E;
+  color:#4E4E4E;
 }
 
 ```
