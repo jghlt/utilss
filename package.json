@@ -3,11 +3,21 @@
   "version": "0.0.1",
   "author": "jghlt",
   "private": true,
-  "description": "internet",
+  "description": "CLI tool for generating functional css utility classes.",
   "repository": {
     "type": "git",
     "url": "https://github.com/jghlt/utilss"
   },
+  "keywords": [
+    "css",
+    "oocss",
+    "postcss",
+    "functional css",
+    "design",
+    "responsive",
+    "performance"
+  ],
+  "license": "MIT",
   "preferGlobal": true,
   "bin": {
     "utilss": "./src/cli.js"
@@ -16,7 +26,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "Apache-2.0",
   "dependencies": {
     "assert": "^1.4.1",
     "async": "^2.6.0",

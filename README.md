@@ -22,7 +22,7 @@ utilss --help
 
 ## Features
 
-utilss is CLI tool for generating functional css utility classes. It allows you to write functional css classes declaratively within your templates.
+utilss is CLI tool for generating functional css utility classes. It allows you to write functional declarative styles directly within your templates.
 
 Pass in some html:
 
@@ -48,7 +48,7 @@ or jsx:
 function Header(props) {
   const { title } = props;
   return (
-      <div className="p:relative w:100%">
+    <div className="p:relative w:100%">
       <div className="pa--vertical:1rem@medium">
         <div className="pa--lateral:2rem">
           <div className="pa:2rem pa:4rem@medium">
