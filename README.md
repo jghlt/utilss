@@ -48,17 +48,17 @@ or jsx:
 function Header(props) {
   const { title } = props;
   return (
-    <div className="p:relative w:100%">
-		<div className="pa--vertical:1rem@medium">
-		  <div className="pa--lateral:2rem">
-		    <div className="pa:2rem pa:4rem@medium">
-		      <h1 className="f-s:24px l-h:1">
-		       {title}
-		      </h1>
-		    </div>
-		  </div>
-		</div>
-	</div>
+      <div className="p:relative w:100%">
+      <div className="pa--vertical:1rem@medium">
+        <div className="pa--lateral:2rem">
+          <div className="pa:2rem pa:4rem@medium">
+            <h1 className="f-s:24px l-h:1">
+              {title}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 ```
@@ -332,12 +332,12 @@ Please see examples folder for more use cases
 
 
 ## Todo
-- generate css
-- merge & move media queries to end of css file
-- merge config.json & props.json
-- add jsdoc comments
-- publish to npm
-- webpack plugin
+- [] generate css
+- [] merge & move media queries to end of css file
+- [] merge config.json & props.json
+- [] add jsdoc comments
+- [] publish to npm
+- [] webpack plugin
 
 ## Acknowledgments
 
