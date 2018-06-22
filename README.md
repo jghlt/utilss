@@ -177,10 +177,10 @@ l-h\:1{
 // config.json
 {
   "breakpoints": {
-	  "medium": "(min-width:48em)"
-	},
+    "medium": "(min-width:48em)"
+  },
   "modifiers": {
-	  "pa": {
+    "pa": {
       "lateral": {
         "padding-left": "$value",
         "padding-right": "$value"
@@ -332,12 +332,12 @@ Please see examples folder for more use cases
 
 
 ## Todo
-- [] generate css
-- [] merge & move media queries to end of css file
-- [] merge config.json & props.json
-- [] add jsdoc comments
-- [] publish to npm
-- [] webpack plugin
+- [ ] generate css
+- [ ] merge & move media queries to end of css file
+- [ ] merge config.json & props.json
+- [ ] add jsdoc comments
+- [ ] publish to npm
+- [ ] webpack plugin
 
 ## Acknowledgments
 
