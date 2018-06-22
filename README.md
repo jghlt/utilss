@@ -17,6 +17,7 @@ utilss --help
 
     -i, --input <input>    input
     -o, --output <output>  output
+    -c, --config <config>  config
 ```
 
 
@@ -26,7 +27,7 @@ utilss is CLI tool for generating functional css utility classes. It allows you 
 
 Pass in some html:
 
-```
+```html
 // input.html
 <div class="p:relative w:100%">
   <div class="pa--vertical:1rem@medium">
@@ -43,7 +44,7 @@ Pass in some html:
 
 or jsx:
 
-```
+```javascript
 // input.js
 function Header(props) {
   const { title } = props;
@@ -65,8 +66,8 @@ function Header(props) {
 
 Get back some css:
 
-```
-// output.css
+```css
+/* output.css */
 .p\:relative{
   position:relative;
 }
@@ -106,13 +107,14 @@ l-h\:1{
 
 ### Basic
 
-```
-// input.html
+input.html
+```html
 <h1 class="font-size:2rem color:#1a1a1a">
   Basic
 </h1>
-
-// output.css
+```
+output.css
+```css
 .font-size\:2rem{
   font-size:2rem;
 }
@@ -124,13 +126,15 @@ l-h\:1{
 
 ### Shorthand
 
-```
-// input.html
+input.html
+```html
 <h1 class="f-s:2rem c:#1a1a1a">
   Shorthand
 </h1>
+```
 
-// output.css
+output.css
+```css
 .font-size\:2rem{
   font-size:2rem;
 }
@@ -341,7 +345,7 @@ l-h\:1{
 ```
 
 ### More
-Please see examples folder for more use cases
+See examples folder for more use cases
 
 
 ## Todo
