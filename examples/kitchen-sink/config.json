@@ -1,0 +1,49 @@
+{
+  "breakpoints": {
+    "small": "(min-width:30em)",
+    "medium": "(min-width:48em)"
+  },
+  "modifiers": {
+    "pa": {
+      "lateral": {
+        "padding-left": "$value",
+        "padding-right": "$value"
+      },
+      "vertical": {
+        "padding-top": "$value",
+        "padding-bottom": "$value"
+      }
+    },
+    "f-s": {
+      "body": {
+        "font-size": "16px"
+      },
+      "title": {
+        "font-size": "24px"
+      }
+    }
+  },
+  "custom": {
+		"ff-mono": {
+			"font-family": "'Space Mono', monospace",
+			"font-weight": "400"
+		},
+		"ff-mono-bold": {
+			"font-family": "'Space Mono', monospace",
+			"font-weight": "700"
+		},
+		"fill-parent":{
+  		"position": "absolute",
+  		"top": "$value",
+  		"right": "$value",
+  		"bottom": "$value",
+  		"left": "$value"
+    }
+	},
+  "colors": {
+    "black": "#1a1a1a",
+    "white": "#fefefe",
+    "smoke": "#f6f6f6",
+    "grey": "#4E4E4E"
+  }
+}

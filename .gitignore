@@ -42,6 +42,10 @@ node_modules/*
 ######################
 dploy.yaml
 
+# build files #
+######################
+examples/**/output.css
+
 # Ignore backups/admin/working directories
 ######################
 todo.md

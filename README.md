@@ -104,9 +104,11 @@ Get back some css:
 
 ### Basic
 
+`utilss -i input.html -o output.css`
+
 input.html
 ```html
-<h1 class="font-size:2rem color:#1a1a1a">
+<h1 class="f-s:2rem c:#1a1a1a">
   Basic
 </h1>
 ```
@@ -122,27 +124,9 @@ output.css
 }
 ```
 
-### Shorthand
-
-input.html
-```html
-<h1 class="f-s:2rem c:#1a1a1a">
-  Shorthand
-</h1>
-```
-
-output.css
-```css
-.font-size\:2rem{
-  font-size:2rem;
-}
-
-.color\:\#1a1a1a{
-  color:#1a1a1a;
-}
-```
-
 ### Breakpoints
+
+`utilss -i input.html -o output.css -c config.json`
 
 config.json
 ```json
@@ -185,6 +169,8 @@ output.css
 ```
 
 ### Modifiers
+
+`utilss -i input.html -o output.css -c config.json`
 
 config.json
 ```json
@@ -250,6 +236,9 @@ output.css
 ```
 
 ### Custom
+
+`utilss -i input.html -o output.css -c config.json`
+
 config.json
 ```json
 {
@@ -312,8 +301,9 @@ output.css
 }
 ```
 
-
 ### Colors
+
+`utilss -i input.html -o output.css -c config.json`
 
 config.json
 ```json
@@ -371,7 +361,6 @@ See examples folder for more use cases
 ## Todo
 - [ ] generate css
 - [ ] merge & move media queries to end of css file
-- [ ] merge config.json & props.json
 - [ ] add jsdoc comments
 - [ ] publish to npm
 - [ ] webpack plugin

@@ -1,8 +1,21 @@
 const fs = require('fs');
-const config = require('./config');
+const props = require('./props');
+
+let config = {
+  breakpoints: {},
+  properties: props,
+  modifiers: {},
+  custom: {},
+  colors: {}
+};
 
 function list(value) {
   return value.split(',');
+}
+
+function escapeSelectorString(selector) {
+  return selector
+    .replace(/[\\^:@#%\s]/g, '\\$&');
 }
 
 function getClassnames(input) {
@@ -43,7 +56,7 @@ function getUniqueSelectors(selectors) {
   return uniqueSelectors;
 }
 
-function getutilssSelectors(selectors) {
+function getUtilssSelectors(selectors) {
   const customKeys = Object.keys(config.custom);
   const propertyKeys = Object.keys(config.properties);
   const allKeys = [].concat(...customKeys, ...propertyKeys);
@@ -56,7 +69,7 @@ function getutilssSelectors(selectors) {
 
 function getSelectorProperty(selector) {
   const selectorKey = selector.split(/:|--/)[0];
-  const selectorProperty = selectorKey;
+  const selectorProperty = config.properties[selectorKey] || selectorKey;
   return selectorProperty;
 }
 
@@ -108,17 +121,28 @@ function getSelectorBreakpoint(selector) {
   return selectorBreakpoint;
 }
 
+function getSelectorBreakpointValue(breakpoint) {
+  const breakpointKey = breakpoint;
+  let breakpointValue = false;
+  if (breakpointKey) {
+    breakpointValue = config.breakpoints[breakpointKey];
+  }
+  return breakpointValue;
+}
+
 function getSelectorParts(selector) {
   const selectorProperty = getSelectorProperty(selector);
   const selectorModifier = getSelectorModifier(selector);
   const selectorValue = getSelectorValue(selector);
   const selectorBreakpoint = getSelectorBreakpoint(selector);
+  const selectorBreakpointValue = getSelectorBreakpointValue(selectorBreakpoint);
   const selectorParts = {
     selector,
     property: selectorProperty,
     modifier: selectorModifier,
     value: selectorValue,
-    breakpoint: selectorBreakpoint
+    breakpoint: selectorBreakpoint,
+    breakpointValue: selectorBreakpointValue
   };
   return selectorParts;
 }
@@ -173,12 +197,13 @@ function getRulesetObject(selectorObject) {
   const rulesetDeclarations = getRulesetDeclarations(selectorObject, rulesetIsCustom, rulesetIsModifier);
   const rulesetObject = {
     selector: selectorObject.selector,
+    escapedSelector: escapeSelectorString(selectorObject.selector),
     selectorParts: { ...selectorObject },
     isCustom: rulesetIsCustom,
     isModifier: rulesetIsModifier,
     isBreakpoint: rulesetIsBreakpoint,
     declarations: rulesetDeclarations,
-    isValidUtilssObject: (rulesetIsModifier || rulesetIsCustom || selectorObject.value)
+    isValidUtilssObject: (rulesetIsModifier || rulesetIsCustom || (selectorObject.value !== false))
   };
   return rulesetObject;
 }
@@ -192,17 +217,45 @@ function getRulesetObjects(objects) {
   return ruleSetObjects;
 }
 
-function utilss(files) {
-  const classNamesFromFiles = getClassNamesFromFiles(files);
-  classNamesFromFiles
+function utilss(userInput, userOutput, userConfig) {
+  const userConfigObject = (userConfig) ? JSON.parse(getFileContents(userConfig)) : {};
+  config = Object.assign(config, userConfigObject);
+  const classNamesInputFiles = getClassNamesFromFiles(userInput);
+  classNamesInputFiles
     .then((result) => {
       const flattenSelectors = getFlattenedSelectors(result);
       const uniqueSelectors = getUniqueSelectors(flattenSelectors);
-      const utilssSelectors = getutilssSelectors(uniqueSelectors);
+      const utilssSelectors = getUtilssSelectors(uniqueSelectors);
       const utilssSelectorsObjects = getSelectorObjects(utilssSelectors);
       const utilssRulesetObjects = getRulesetObjects(utilssSelectorsObjects);
-      console.log('utilssRulesetObjects');
-      console.log(utilssRulesetObjects);
+      let cssString = '';
+      utilssRulesetObjects.forEach((object) => {
+        const {
+          escapedSelector,
+          selectorParts
+        } = object;
+        if (selectorParts.breakpoint && selectorParts.breakpointValue) {
+          cssString += `
+            @media screen and ${selectorParts.breakpointValue} {
+              .${escapedSelector} {
+                ${selectorParts.property}: ${selectorParts.value};
+              }
+            }
+          `;
+        } else {
+          cssString += `
+            .${escapedSelector} {
+              ${selectorParts.property}: ${selectorParts.value};
+            }
+          `;
+        }
+      });
+      fs.writeFile(userOutput, cssString, (error) => {
+        if (error) {
+          return console.log(error);
+        }
+        return console.log('finished');
+      });
     })
     .catch((error) => {
       console.log(error);
