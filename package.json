@@ -1,8 +1,7 @@
 {
-  "name": "utilss",
+  "name": "utilss-cli",
   "version": "0.0.1",
   "author": "jghlt",
-  "private": true,
   "description": "CLI tool for generating functional css utility classes",
   "repository": {
     "type": "git",

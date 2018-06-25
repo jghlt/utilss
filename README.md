@@ -1,10 +1,10 @@
 # utilss
 
-CLI tool for generating functional css utility classes.
+CLI tool for generating functional css utility classes. Currently under development, not currently ready for production.
 
 ## Install
 ```
-npm i -s utilss
+npm i -s utilss-cli -g
 ```
 
 ## Usage
@@ -359,10 +359,7 @@ See examples folder for more use cases
 
 
 ## Todo
-- [ ] generate css
-- [ ] merge & move media queries to end of css file
-- [ ] add jsdoc comments
-- [ ] publish to npm
+- [ ] move media queries to end of css file
 - [ ] webpack plugin
 
 ## Acknowledgments
