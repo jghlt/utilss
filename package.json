@@ -39,8 +39,5 @@
     "glob": "^7.1.2",
     "lodash": "^4.17.10",
     "minify-css-string": "^1.0.0"
-  },
-  "devDependencies": {
-    "clean-css": "^4.1.11"
   }
 }
