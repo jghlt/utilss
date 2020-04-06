@@ -36,9 +36,12 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "js-yaml": ">=3.13.1",
     "glob": "^7.1.2",
+    "js-yaml": ">=3.13.1",
     "lodash": ">=4.17.13",
     "minify-css-string": "^1.0.0"
+  },
+  "devDependencies": {
+    "acorn": "^7.1.1"
   }
 }
