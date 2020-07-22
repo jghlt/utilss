@@ -38,7 +38,7 @@
     "eslint-plugin-react": "^7.7.0",
     "glob": "^7.1.2",
     "js-yaml": ">=3.13.1",
-    "lodash": ">=4.17.13",
+    "lodash": ">=4.17.19",
     "minify-css-string": "^1.0.0"
   },
   "devDependencies": {
