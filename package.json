@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "assert": "^1.4.1",
-    "async": "^2.6.0",
+    "async": "^3.2.2",
     "babel-eslint": "^8.2.3",
     "commander": "^2.15.1",
     "css-property-parser": "^1.0.6",
